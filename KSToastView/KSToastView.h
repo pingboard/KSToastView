@@ -49,11 +49,13 @@ typedef void (^KSToastBlock)(void);
 + (void)ks_showToast:(id)toast;
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration;
 + (void)ks_showToast:(id)toast delay:(NSTimeInterval)delay;
++ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration endEditing:(BOOL) endEditing;
 + (void)ks_showToast:(id)toast completion:(KSToastBlock)completion;
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay;
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration completion:(KSToastBlock)completion;
 + (void)ks_showToast:(id)toast delay:(NSTimeInterval)delay completion:(KSToastBlock)completion;
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay completion:(KSToastBlock)completion;
+
 
 /**
  *  @Deprecated

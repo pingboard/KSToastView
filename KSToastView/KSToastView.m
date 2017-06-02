@@ -105,6 +105,11 @@ static NSTextAlignment _textAligment = NSTextAlignmentCenter;
 	return [self ks_showToast:toast duration:duration delay:KS_TOAST_VIEW_SHOW_DELAY];
 }
 
++ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration endEditing:(BOOL) endEditing{
+    return [self ks_showToast:toast duration:duration delay:KS_TOAST_VIEW_SHOW_DELAY];
+}
+
+
 + (void)ks_showToast:(id)toast delay:(NSTimeInterval)delay {
 	return [self ks_showToast:toast duration:_duration delay:delay];
 }
@@ -117,6 +122,11 @@ static NSTextAlignment _textAligment = NSTextAlignmentCenter;
 	return [self ks_showToast:toast duration:duration delay:delay completion:nil];
 }
 
++ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay endEditing:(BOOL) endEditing{
+    return [self ks_showToast:toast duration:duration delay:delay endEditing:endEditing completion:nil];
+}
+
+
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration completion:(KSToastBlock)completion {
 	return [self ks_showToast:toast duration:duration delay:KS_TOAST_VIEW_SHOW_DELAY completion:completion];
 }
@@ -125,7 +135,11 @@ static NSTextAlignment _textAligment = NSTextAlignmentCenter;
 	return [self ks_showToast:toast duration:_duration delay:delay completion:completion];
 }
 
-+ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay completion:(KSToastBlock)completion {
++ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay completion:(KSToastBlock)completion{
+    return [self ks_showToast:toast duration:duration delay:delay endEditing:YES completion:completion];
+}
+
++ (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay endEditing:(BOOL) endEditing completion:(KSToastBlock)completion {
 	NSString *toastText = [NSString stringWithFormat:@"%@", toast];
 	if (toastText.length < 1) {
 		return;
@@ -137,7 +151,7 @@ static NSTextAlignment _textAligment = NSTextAlignmentCenter;
 		    return;
 		}
 		[[keyWindow viewWithTag:KS_TOAST_VIEW_TAG] removeFromSuperview];
-		[keyWindow endEditing:YES];
+		[keyWindow endEditing:endEditing];
 
 		UIView *toastView = [UIView new];
 		toastView.translatesAutoresizingMaskIntoConstraints = NO;
