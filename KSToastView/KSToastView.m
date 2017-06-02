@@ -106,7 +106,7 @@ static NSTextAlignment _textAligment = NSTextAlignmentCenter;
 }
 
 + (void)ks_showToast:(id)toast duration:(NSTimeInterval)duration endEditing:(BOOL) endEditing{
-    return [self ks_showToast:toast duration:duration delay:KS_TOAST_VIEW_SHOW_DELAY];
+	return [self ks_showToast:toast duration:duration delay:KS_TOAST_VIEW_SHOW_DELAY endEditing:endEditing];
 }
 
 
